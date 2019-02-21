@@ -4,6 +4,7 @@ import { InputControlComponent } from './input-control.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatFormFieldModule } from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CONTROLS } from '../../constants';
 
 describe('InputControlComponent', () => {
   let component: InputControlComponent;

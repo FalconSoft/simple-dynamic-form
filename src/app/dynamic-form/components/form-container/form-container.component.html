@@ -1,0 +1,5 @@
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <app-flex-container #formContent [data]="config"></app-flex-container>
+    <button mat-raised-button type="submit" [disabled]="!formData.valid">Submit</button>
+    <button mat-button type="reset">Reset</button>
+</form>

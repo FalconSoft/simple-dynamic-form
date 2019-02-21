@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DynamicFormControl, TextareaConfig } from 'src/app/interfaces/dynamic-form-control';
+import { DynamicFormControl, TextareaConfig } from '../../interfaces/dynamic-form-control';
 import { FormControl } from '@angular/forms';
 
 @Component({

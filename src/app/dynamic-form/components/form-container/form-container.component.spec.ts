@@ -2,7 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormContainerComponent } from './form-container.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { config } from 'src/app/form-config';
+import { CONTROLS } from '../../constants';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexContainerComponent } from '../flex-container/flex-container.component';
 
 describe('FormContainerComponent', () => {
   let component: FormContainerComponent;
@@ -10,8 +12,8 @@ describe('FormContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FlexLayoutModule ],
-      declarations: [ FormContainerComponent ]
+      imports: [ FlexLayoutModule, ReactiveFormsModule ],
+      declarations: [ FormContainerComponent, FlexContainerComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +21,7 @@ describe('FormContainerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FormContainerComponent);
     component = fixture.componentInstance;
-    component.data = {title: 'Unit test', controls: []};
+    component.data = {label: 'Unit test', controls: [], control: CONTROLS.CONTAINER};
     fixture.detectChanges();
   });
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DynamicFormControl, FormControlData } from 'src/app/interfaces/dynamic-form-control';
-import { FormControl } from '@angular/forms';
+import { DynamicFormControl, InputConfig } from '../../interfaces/dynamic-form-control';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-input-control',
@@ -11,7 +11,7 @@ import { FormControl } from '@angular/forms';
 export class InputControlComponent implements OnInit, DynamicFormControl {
 
   @Input()
-  data: FormControlData;
+  data: InputConfig;
 
   control: FormControl;
 
@@ -24,5 +24,8 @@ export class InputControlComponent implements OnInit, DynamicFormControl {
   ngOnInit() {
     this.style.width = this.data.width;
     this.style.height = this.data.height;
+    if (this.data.required) {
+      this.control.setValidators([Validators.required]);
+    }
   }
 }
