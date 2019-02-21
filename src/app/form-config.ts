@@ -1,42 +1,116 @@
-import { InputControlComponent } from './components/input-control/input-control.component';
-import { TextareaControlComponent } from './components/textarea-control/textarea-control.component';
-import { FormContainerComponent } from './components/form-container/form-container.component';
+import { CONTROLS } from './dynamic-form/constants';
 
 export const config = {
-  title: 'Test form',
+  label: 'Test form',
+  control: CONTROLS.CONTAINER,
   controls: [{
-    type: InputControlComponent,
-    name: 'first-name',
-    label: 'First name',
-    width: '20%',
-    height: '100px'
-  }, {
-    type: InputControlComponent,
-    name: 'last-name',
-    label: 'Last name',
-    width: '30%'
-  }, {
-    type: TextareaControlComponent,
-    name: 'bio',
-    label: 'Biography',
-    rows: 10
-  }, {
-    type: FormContainerComponent,
-    title: 'Adress',
-    name: 'adress',
+    control: CONTROLS.CONTAINER,
     layout: 'row',
     controls: [{
-      type: InputControlComponent,
-      name: 'country',
-      label: 'Country'
+      control: CONTROLS.CONTAINER,
+      layout: 'row',
+      controls: [{
+          control: CONTROLS.INPUT,
+          name: 'first-name',
+          label: 'First name',
+          width: '200px',
+          required: true
+          // height: '75px'
+        }, {
+          control: CONTROLS.INPUT,
+          name: 'last-name',
+          label: 'Last name',
+          width: '300px'
+        }]
     }, {
-      type: InputControlComponent,
-      name: 'city',
-      label: 'City'
-    }, {
-      type: InputControlComponent,
-      name: 'streep',
-      label: 'Street'
+      control: CONTROLS.CONTAINER,
+      controls: [{
+          control: CONTROLS.INPUT,
+          name: 'company',
+          label: 'Company',
+          width: '100%',
+          // height: '75px'
+        }, {
+          control: CONTROLS.INPUT,
+          name: 'job',
+          label: 'Job',
+          width: '100%',
+          // width: '300px'
+        }, {
+          control: CONTROLS.INPUT,
+          name: 'experience',
+          label: 'Experience in months',
+          type: 'number',
+          width: '100%',
+        }]
     }]
+  }, {
+    name: 'email',
+    control: CONTROLS.INPUT,
+    type: 'email',
+    label: 'Email'
+  }, {
+    name: 'phone',
+    control: CONTROLS.INPUT,
+    type: 'tel',
+    label: 'Mobile phone'
+  }, {
+    control: CONTROLS.TEXT,
+    name: 'bio',
+    label: 'Biography',
+    rows: 3
+  }, {
+    control: CONTROLS.CONTAINER,
+    label: 'Location',
+    name: 'location',
+    layout: 'row',
+    controls: [{
+      control: CONTROLS.CONTAINER,
+      name: 'region',
+      controls: [{
+        control: CONTROLS.SELECT,
+        name: 'country',
+        label: 'Country',
+        options: [{
+          value: 'ua',
+          label: 'Ukraine'
+        }, {
+          value: 'uk',
+          label: 'United Kindom'
+        }]
+      }, {
+        control: CONTROLS.INPUT,
+        name: 'city',
+        label: 'City'
+      }]
+    }, {
+      control: CONTROLS.CONTAINER,
+      name: 'address',
+      label: 'Address',
+      layout: 'row',
+      controls: [{
+        control: CONTROLS.INPUT,
+        name: 'street',
+        label: 'Street',
+        width: '300px'
+      }, {
+        control: CONTROLS.INPUT,
+        name: 'number',
+        label: 'Building',
+        type: 'number',
+        width: '100px'
+      }, {
+        control: CONTROLS.INPUT,
+        name: 'index',
+        label: 'Index',
+        type: 'number',
+        width: '100px'
+      }]
+    }]
+  }, {
+    control: CONTROLS.CHECKBOX,
+    label: 'Accept conditions',
+    name: 'conditions',
+    required: true
   }]
 };

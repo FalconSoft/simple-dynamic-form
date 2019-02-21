@@ -5,25 +5,20 @@ import {
   ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { ElHostDirective } from 'src/app/directives/el-host.directive';
-import { DynamicFormControl, FormConfig, ContainerConfig } from 'src/app/interfaces/dynamic-form-control';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ElHostDirective } from '../../directives/el-host.directive';
+import { DynamicFormControl, FormContainerData, FormControlConfig } from '../../interfaces/dynamic-form-control';
 
 @Component({
-  selector: 'app-form-container',
-  templateUrl: './form-container.component.html',
-  styleUrls: ['./form-container.component.scss']
+  selector: 'app-flex-container',
+  templateUrl: './flex-container.component.html',
+  styleUrls: ['./flex-container.component.scss']
 })
-export class FormContainerComponent implements OnInit, AfterViewInit {
+export class FlexContainerComponent implements OnInit, AfterViewInit, DynamicFormControl {
 
   control = new FormGroup({});
 
   @Input()
-  data: ContainerConfig;
-
-  // For test purposes
-  formState: Observable<string>;
+  data: FormContainerData;
 
   @ViewChildren(ElHostDirective)
   controls: QueryList<ElHostDirective>;
@@ -32,23 +27,23 @@ export class FormContainerComponent implements OnInit, AfterViewInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     private cd: ChangeDetectorRef ) { }
   ngOnInit() {
-    this.formState = this.control.valueChanges.pipe(map(c => JSON.stringify(c)));
   }
 
   ngAfterViewInit() {
     const controlsList = this.controls.toArray();
-    this.data.controls.forEach((item, index) => {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(<any>item.type);
+    this.data.controls.forEach((item: FormControlConfig, index) => {
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(<any>item.control);
 
       const viewContainerRef = controlsList[index].containerRef;
       viewContainerRef.clear();
 
       const componentRef = viewContainerRef.createComponent(componentFactory);
-      const component = (<DynamicFormControl>componentRef.instance);
+      const component = <DynamicFormControl>componentRef.instance;
       component.data = item;
       this.control.addControl(item.name, component.control);
     });
     // Fix for ExpressionChangedAfterItHasBeenCheckedError
     this.cd.detectChanges();
   }
+
 }

@@ -1,0 +1,10 @@
+.flex-container {
+  margin: 1em;
+  border: 1px black solid;
+  :host ::ng-deep .flex-content {
+    padding: 1em;
+    > * {
+      display: flex;
+    }
+  }
+}
