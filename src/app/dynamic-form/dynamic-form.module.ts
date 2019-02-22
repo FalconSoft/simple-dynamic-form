@@ -13,6 +13,7 @@ import { TextareaControlComponent } from './components/textarea-control/textarea
 import { SelectControlComponent } from './components/select-control/select-control.component';
 import { CheckboxControlComponent } from './components/checkbox-control/checkbox-control.component';
 import { FlexContainerComponent } from './components/flex-container/flex-container.component';
+import { ActionControlComponent } from './components/action-control/action-control.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FlexContainerComponent } from './components/flex-container/flex-contain
     TextareaControlComponent,
     SelectControlComponent,
     CheckboxControlComponent,
-    FlexContainerComponent
+    FlexContainerComponent,
+    ActionControlComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { FlexContainerComponent } from './components/flex-container/flex-contain
     TextareaControlComponent,
     FlexContainerComponent,
     SelectControlComponent,
-    CheckboxControlComponent
+    CheckboxControlComponent,
+    ActionControlComponent
   ],
 })
 export class DynamicFormModule { }

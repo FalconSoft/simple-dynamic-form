@@ -4,5 +4,5 @@ import { Directive, ViewContainerRef } from '@angular/core';
   selector: '[appElHost]'
 })
 export class ElHostDirective {
-  constructor(public containerRef: ViewContainerRef) { }
+  constructor(public containerRef: ViewContainerRef) {}
 }

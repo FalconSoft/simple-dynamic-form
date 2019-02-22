@@ -1,6 +1,6 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { config } from './form-config';
+import { config, personalForm } from './form-config';
 import { FormContainerComponent } from './dynamic-form/components/form-container/form-container.component';
 
 @Component({
@@ -8,23 +8,19 @@ import { FormContainerComponent } from './dynamic-form/components/form-container
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'simple-dynamic-form';
 
   @ViewChild('form')
   form: FormContainerComponent;
 
-  formConfig = config;
+  formConfig: any = config;
 
   submittedData;
 
-  constructor(private cd: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    this.cd.detectChanges();
-  }
+  constructor() {}
 
   onSubmit(value) {
-    this.submittedData = JSON.stringify(value);
+    this.submittedData = value;
   }
 }

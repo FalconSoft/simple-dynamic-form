@@ -24,5 +24,4 @@ export class TextareaControlComponent implements OnInit, DynamicFormControl {
   ngOnInit() {
     this.style.width = this.data.width || '50%';
   }
-
 }

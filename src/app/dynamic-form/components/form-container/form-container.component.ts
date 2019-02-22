@@ -1,21 +1,8 @@
-import { Component, Input, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, EventEmitter, Output, ChangeDetectorRef, SimpleChange } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormContainerData, DynamicFormControl } from '../../interfaces/dynamic-form-control';
-import { InputControlComponent } from '../input-control/input-control.component';
-import { TextareaControlComponent } from '../textarea-control/textarea-control.component';
-import { SelectControlComponent } from '../select-control/select-control.component';
-import { CheckboxControlComponent } from '../checkbox-control/checkbox-control.component';
-import { FlexContainerComponent } from '../flex-container/flex-container.component';
-import { CONTROLS } from '../../constants';
-
-const CONTROL_MAP = {
-  [CONTROLS.INPUT]: InputControlComponent,
-  [CONTROLS.SELECT]: SelectControlComponent,
-  [CONTROLS.CONTAINER]: FlexContainerComponent,
-  [CONTROLS.TEXT]: TextareaControlComponent,
-  [CONTROLS.CHECKBOX]: CheckboxControlComponent
-};
+import { CONTROL_MAP } from '../../constants';
 
 @Component({
   selector: 'app-form-container',
@@ -54,15 +41,20 @@ export class FormContainerComponent implements OnInit {
     }
   }
 
-  private getFormConfiguration(data) {
+  /**
+   * Gets configuration form configuration based on JSON format data.
+   * @param data Control JSON config.
+   * @returns FormContainerData.
+   */
+  private getFormConfiguration(data: any): FormContainerData {
     if (!CONTROL_MAP.hasOwnProperty(data.control)) {
       throw new Error(`Bad control type ${data.control}. Use one from the list: ${Object.keys(CONTROL_MAP).join(', ')}`);
     }
     data.control = CONTROL_MAP[data.control];
     if (data.controls) {
-      data.controls.map(item => this.getFormConfiguration(item));
+      data.controls = [...data.controls.map(item => this.getFormConfiguration(item))];
     }
 
-    return data;
+    return {...data};
   }
 }

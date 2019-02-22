@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FlexContainerComponent } from './flex-container.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ElHostDirective } from '../../directives/el-host.directive';
 
 describe('FlexContainerComponent', () => {
   let component: FlexContainerComponent;
@@ -10,7 +11,7 @@ describe('FlexContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FlexLayoutModule],
-      declarations: [ FlexContainerComponent ]
+      declarations: [ FlexContainerComponent, ElHostDirective ],
     })
     .compileComponents();
   }));
@@ -23,6 +24,7 @@ describe('FlexContainerComponent', () => {
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

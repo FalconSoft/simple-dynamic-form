@@ -1,28 +1,42 @@
 import { CONTROLS } from './dynamic-form/constants';
 
-export const config = {
-  label: 'Test form',
+export const personalForm = {
   control: CONTROLS.CONTAINER,
   controls: [{
     control: CONTROLS.CONTAINER,
     layout: 'row',
     controls: [{
-      control: CONTROLS.CONTAINER,
-      layout: 'row',
-      controls: [{
-          control: CONTROLS.INPUT,
-          name: 'first-name',
-          label: 'First name',
-          width: '200px',
-          required: true
-          // height: '75px'
-        }, {
-          control: CONTROLS.INPUT,
-          name: 'last-name',
-          label: 'Last name',
-          width: '300px'
-        }]
-    }, {
+        control: CONTROLS.INPUT,
+        name: 'first-name',
+        label: 'First name',
+        width: '200px',
+        required: true
+      }, {
+        control: CONTROLS.INPUT,
+        name: 'last-name',
+        label: 'Last name',
+        width: '300px'
+      }]
+  }, {
+    control: CONTROLS.ACTION,
+    label: 'Set default name',
+    cmd: 'set',
+    payload: {'first-name': 'John', 'last-name': 'Doe'}
+  } , {
+    control: CONTROLS.ACTION,
+    label: 'Reset',
+    cmd: 'reset'
+  }]
+}
+
+export const config = {
+  label: 'Test form',
+  control: CONTROLS.CONTAINER,
+  align: 'center center',
+  controls: [{
+    control: CONTROLS.CONTAINER,
+    layout: 'row',
+    controls: [personalForm, {
       control: CONTROLS.CONTAINER,
       controls: [{
           control: CONTROLS.INPUT,

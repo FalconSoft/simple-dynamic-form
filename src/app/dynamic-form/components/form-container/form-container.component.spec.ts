@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CONTROLS } from '../../constants';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexContainerComponent } from '../flex-container/flex-container.component';
+import { ElHostDirective } from '../../directives/el-host.directive';
 
 describe('FormContainerComponent', () => {
   let component: FormContainerComponent;
@@ -13,7 +14,7 @@ describe('FormContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FlexLayoutModule, ReactiveFormsModule ],
-      declarations: [ FormContainerComponent, FlexContainerComponent ],
+      declarations: [ FormContainerComponent, FlexContainerComponent, ElHostDirective ],
     })
     .compileComponents();
   }));

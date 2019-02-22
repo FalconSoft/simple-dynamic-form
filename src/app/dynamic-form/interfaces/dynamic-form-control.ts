@@ -18,9 +18,11 @@ export interface FormConfig {
 }
 
 export interface FormContainerData extends FormControlData {
-  layout?: string;
   name: string;
   controls: FormControlConfig[];
+  layout?: string;
+  align?: string;
+  gap?: string;
 }
 
 export interface InputConfig extends FormControlData {
@@ -33,6 +35,11 @@ export interface TextareaConfig extends FormControlData {
 
 export interface SelectConfig extends FormControlData {
   options: {value: string, label: string}[];
+}
+
+export interface ActionConfig extends FormControlData {
+  cmd: string;
+  payload?: any;
 }
 
 export interface DynamicFormControl {
