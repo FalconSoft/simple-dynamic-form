@@ -37,6 +37,11 @@ export interface SelectConfig extends FormControlData {
   options: {value: string, label: string}[];
 }
 
+export interface ActionConfig extends FormControlData {
+  cmd: string;
+  payload?: any;
+}
+
 export interface DynamicFormControl {
   data: FormControlData;
   control: FormControl | FormGroup;

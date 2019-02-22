@@ -57,7 +57,7 @@ export class FlexContainerComponent implements OnInit, DynamicFormControl {
       return item.name;
     }
     if (item.label) {
-      item.label.toLowerCase().replace(/ /g, '-');
+      return item.label.toLowerCase().replace(/ /g, '-');
     }
     return 'form-block';
   }

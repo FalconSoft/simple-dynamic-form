@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { config } from './form-config';
+import { config, personalForm } from './form-config';
 import { FormContainerComponent } from './dynamic-form/components/form-container/form-container.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent {
   @ViewChild('form')
   form: FormContainerComponent;
 
-  formConfig = config;
+  formConfig: any = config;
 
   submittedData;
 
