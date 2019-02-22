@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormContainerData, DynamicFormControl } from '../../interfaces/dynamic-form-control';
@@ -54,7 +54,12 @@ export class FormContainerComponent implements OnInit {
     }
   }
 
-  private getFormConfiguration(data) {
+  /**
+   * Gets configuration form configuration based on JSON format data.
+   * @param data Control JSON config.
+   * @returns FormContainerData.
+   */
+  private getFormConfiguration(data: any): FormContainerData {
     if (!CONTROL_MAP.hasOwnProperty(data.control)) {
       throw new Error(`Bad control type ${data.control}. Use one from the list: ${Object.keys(CONTROL_MAP).join(', ')}`);
     }

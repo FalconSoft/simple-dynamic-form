@@ -18,9 +18,11 @@ export interface FormConfig {
 }
 
 export interface FormContainerData extends FormControlData {
-  layout?: string;
   name: string;
   controls: FormControlConfig[];
+  layout?: string;
+  align?: string;
+  gap?: string;
 }
 
 export interface InputConfig extends FormControlData {

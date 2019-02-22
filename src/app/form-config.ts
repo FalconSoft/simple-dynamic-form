@@ -3,6 +3,7 @@ import { CONTROLS } from './dynamic-form/constants';
 export const config = {
   label: 'Test form',
   control: CONTROLS.CONTAINER,
+  align: 'center center',
   controls: [{
     control: CONTROLS.CONTAINER,
     layout: 'row',

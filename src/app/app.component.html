@@ -1,15 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Simple dynamic component.
-  </h1>
+<div>
+  <h1 class="text-center">Simple dynamic form.</h1>
   <app-form-container (submitted)="onSubmit($event)" #form [data]="formConfig"></app-form-container>
-  <div>
-      <h5>Form state:</h5>
+  <div class="text-center">
+      <h5>Form dynamic state:</h5>
       <div>{{form.formState | async}}</div>
   </div>
-  <div>
-    <h5>Submitted form value:</h5>
-    <div>{{submittedData}}</div>
+  <div class="text-center">
+    <h5>Submitted form values:</h5>
+    <div>{{submittedData | json}}</div>
   </div>
 </div>
