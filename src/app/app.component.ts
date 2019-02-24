@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 
 import { config, personalForm } from './form-config';
 import { FormContainerComponent } from './dynamic-form/components/form-container/form-container.component';
+import { UIModel } from './dynamic-content/models';
+import { TestPageUIModel } from './test-page.config';
+import { actions } from './actions-container';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,10 @@ export class AppComponent {
   formConfig: any = config;
 
   submittedData;
+
+  uiModel: UIModel = TestPageUIModel;
+  dataModel = {};
+  actions = actions;
 
   constructor() {}
 
