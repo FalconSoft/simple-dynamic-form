@@ -9,22 +9,16 @@ export const TestPageUIModel = <UIModel>{
     },
     children: [
         {
-            type: 'text',
-            containerProperties: <AttributesMap>{},
-            itemProperties: {
-                text: 'First Name'
-            },
-            children: null
-        },
-        {
             type: 'text-input',
-            containerProperties: <AttributesMap>{},
+            containerProperties: <AttributesMap>{
+                width: '100%'
+            },
             itemProperties: <AttributesMap>{
                 isNumeric: false,
                 isDate: false,
                 format: '',
-                placeholder: 'First Name',
-                dataModelPath: 'firstName'
+                placeholder: 'Username',
+                dataModelPath: 'userName',
             }
         },
         {
@@ -34,27 +28,32 @@ export const TestPageUIModel = <UIModel>{
             },
             itemProperties: {
                 fxLayout: 'row',
+                fxLayoutGap: '1rem',
                 width: '100%'
             },
             children: [{
                 type: 'text-input',
-                containerProperties: {},
+                containerProperties: {
+                  fxFlex: '1 1 auto'
+                },
                 itemProperties: {
                     isNumeric: false,
                     isDate: false,
                     format: '',
-                    placeholder: 'First Name 1',
+                    placeholder: 'First Name',
                     dataModelPath: 'firstName'
                 }
             },
             {
                 type: 'text-input',
-                containerProperties: {},
+                containerProperties: {
+                  fxFlex: '1 1 auto'
+                },
                 itemProperties: {
                     isNumeric: false,
                     isDate: false,
                     format: '',
-                    placeholder: 'Last Name 1',
+                    placeholder: 'Last Name',
                     dataModelPath: 'lastName'
                 }
             },
@@ -65,7 +64,8 @@ export const TestPageUIModel = <UIModel>{
             type: 'text',
             containerProperties: {},
             itemProperties: {
-                text: 'Last Name'
+                text: 'Address',
+                width: '100%'
             }
         },
         {
@@ -75,17 +75,86 @@ export const TestPageUIModel = <UIModel>{
                 isNumeric: false,
                 isDate: false,
                 format: '',
-                placeholder: 'Last Name',
-                dataModelPath: 'lastName'
+                placeholder: 'Line 1',
+                dataModelPath: 'line1'
             }
         },
         {
-            type: 'button',
+            type: 'text-input',
             containerProperties: {},
             itemProperties: {
-                label: 'Test Button 1',
-                clickActionKey: 'consoleLog'
-            }
+                isNumeric: false,
+                isDate: false,
+                format: '',
+                placeholder: 'Line 2',
+                dataModelPath: 'line2'
+          }
+        },
+        {
+            type: 'text-input',
+            containerProperties: {},
+            itemProperties: {
+                isNumeric: false,
+                isDate: false,
+                format: '',
+                placeholder: 'State',
+                dataModelPath: 'state'
+          }
+        },
+        {
+            type: 'flex-container',
+            containerProperties: {
+                width: '100%'
+            },
+            itemProperties: {
+                fxLayout: 'row',
+                fxLayoutGap: '1rem',
+                width: '100%',
+            },
+            children: [{
+                type: 'text-input',
+                containerProperties: {
+                    fxFlex: '1 1 auto'
+                },
+                itemProperties: {
+                    isNumeric: false,
+                    isDate: false,
+                    format: '',
+                    placeholder: 'City',
+                    dataModelPath: 'city'
+                }
+            },
+            {
+                type: 'text-input',
+                containerProperties: {
+                    fxFlex: '1 1 auto'
+                },
+                itemProperties: {
+                    isNumeric: false,
+                    isDate: false,
+                    format: '',
+                    placeholder: 'Zip',
+                    dataModelPath: 'zip'
+                }
+            }]
+        },
+        {
+            type: 'flex-container',
+            itemProperties: {
+              fxLayoutAlign: 'flex-end stretch'
+            },
+            children: [
+              {
+                type: 'button',
+                containerProperties: {
+                    fxLayout: 'row'
+                },
+                itemProperties: {
+                    label: 'SUBMIT',
+                    clickActionKey: 'consoleLog'
+                }
+              }
+            ]
         }]
 };
 

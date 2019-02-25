@@ -6,6 +6,8 @@ import { BaseUIComponent } from './base-ui-component';
     template: `
     <div
         [fxLayout]="uiModel.itemProperties?.fxLayout || 'row'"
+        [fxLayoutGap]="uiModel.itemProperties?.fxLayoutGap || '0'"
+        [fxLayoutAlign]="uiModel.itemProperties?.fxLayoutAlign"
         [style.height]="uiModel.itemProperties?.height || '100%'"
         [style.width]="uiModel.itemProperties?.width || '100%'"
     >

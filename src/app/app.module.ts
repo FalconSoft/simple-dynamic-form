@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { DynamicContentModule } from './dynamic-content/dynamic-content.module';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     BrowserModule,
     DynamicContentModule,
-    DynamicFormModule
+    DynamicFormModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

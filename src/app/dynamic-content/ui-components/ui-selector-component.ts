@@ -1,36 +1,40 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { BaseUIComponent } from './base-ui-component';
+import { InputUIComponent } from './input-ui-component';
+import { TextUIComponent } from './text-ui-component';
+import { ButtonUIComponent } from './button-ui-component';
+import { FlexContainerUIComponent } from './flex-container-ui-component';
+
+const resolveComponent = (() => {
+  const MAP = {
+    'text-input': InputUIComponent,
+    'text': TextUIComponent,
+    'button': ButtonUIComponent,
+    'flex-container': FlexContainerUIComponent
+};
+  return (key: string) => {
+    if (MAP.hasOwnProperty(key)) {
+      return MAP[key];
+    }
+    throw new Error(`Unknown component ${key}.`);
+  };
+})();
 
 @Component({
     selector: 'app-ui-selector',
-    template: `
-    <ng-container [ngSwitch]="uiModel.type">
-        <app-ui-text *ngSwitchCase="'text'"
-            [uiModel]='uiModel'
-            [dataModel]='dataModel'
-            [actions]='actions'
-        ></app-ui-text>
-
-        <app-ui-input *ngSwitchCase="'text-input'"
-            [uiModel]='uiModel'
-            [dataModel]='dataModel'
-            [actions]='actions'
-        ></app-ui-input>
-
-        <app-ui-button *ngSwitchCase="'button'"
-            [uiModel]='uiModel'
-            [dataModel]='dataModel'
-            [actions]='actions'
-        ></app-ui-button>
-
-        <app-ui-flex-container *ngSwitchCase="'flex-container'"
-            [uiModel]='uiModel'
-            [dataModel]='dataModel'
-            [actions]='actions'
-        ></app-ui-flex-container>
-    </ng-container>
-    `
+    template: ''
 })
-export class UISelectorComponent extends BaseUIComponent {
+export class UISelectorComponent extends BaseUIComponent implements OnInit {
+  constructor(private containerRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
+    super();
+  }
 
+  ngOnInit() {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(resolveComponent(this.uiModel.type));
+    const componentRef = this.containerRef.createComponent(componentFactory);
+    const component = <BaseUIComponent>componentRef.instance;
+    component.actions = this.actions;
+    component.dataModel = this.dataModel;
+    component.uiModel = this.uiModel;
+  }
 }
