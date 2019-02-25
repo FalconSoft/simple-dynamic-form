@@ -4,14 +4,18 @@ import { InputUIComponent } from './input-ui-component';
 import { TextUIComponent } from './text-ui-component';
 import { ButtonUIComponent } from './button-ui-component';
 import { FlexContainerUIComponent } from './flex-container-ui-component';
+import { CheckboxUIComponent } from './checkbox-ui-component';
+import { SelectUIComponent } from './select-ui-component';
 
 const resolveComponent = (() => {
   const MAP = {
     'text-input': InputUIComponent,
     'text': TextUIComponent,
     'button': ButtonUIComponent,
-    'flex-container': FlexContainerUIComponent
-};
+    'flex-container': FlexContainerUIComponent,
+    'checkbox': CheckboxUIComponent,
+    'select': SelectUIComponent
+  };
   return (key: string) => {
     if (MAP.hasOwnProperty(key)) {
       return MAP[key];

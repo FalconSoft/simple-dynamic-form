@@ -1,7 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { config, personalForm } from './form-config';
-import { FormContainerComponent } from './dynamic-form/components/form-container/form-container.component';
 import { UIModel } from './dynamic-content/models';
 import { TestPageUIModel } from './test-page.config';
 import { actions } from './actions-container';
@@ -14,20 +12,9 @@ import { actions } from './actions-container';
 export class AppComponent {
   title = 'simple-dynamic-form';
 
-  @ViewChild('form')
-  form: FormContainerComponent;
-
-  formConfig: any = config;
-
-  submittedData;
+  config: string;
 
   uiModel: UIModel = TestPageUIModel;
   dataModel = {};
   actions = actions;
-
-  constructor() {}
-
-  onSubmit(value) {
-    this.submittedData = value;
-  }
 }
