@@ -39,7 +39,10 @@ import { UISelectorComponent } from './ui-components/ui-selector-component';
         UISelectorComponent
     ],
     entryComponents: [
-
+      InputUIComponent,
+      TextUIComponent,
+      ButtonUIComponent,
+      FlexContainerUIComponent
     ],
 })
 export class DynamicContentModule { }
