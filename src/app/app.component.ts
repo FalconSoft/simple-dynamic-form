@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { UIModel } from './dynamic-content/models';
-import { TestPageUIModel } from './test-page.config';
-import { actions } from './actions-container';
+import { UIModel, ActionsMap, IActionsContainer } from './dynamic-content/models';
+import { TestPageUIModel, TestActionsMap } from './test-page.config';
+import { EditorUIModel } from './edit-config';
+import { ActionsContainer } from './actions-container';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,26 @@ import { actions } from './actions-container';
 export class AppComponent {
   title = 'simple-dynamic-form';
 
-  config: string;
-
   uiModel: UIModel = TestPageUIModel;
+  actions = new ActionsContainer(TestActionsMap);
   dataModel = {};
-  actions = actions;
+
+  editorUIModel: UIModel = EditorUIModel;
+  editorActions: IActionsContainer;
+  editorDataModel = {
+    config: JSON.stringify(TestPageUIModel, null, 4)
+  };
+
+  constructor() {
+    this.editorActions = new ActionsContainer(<ActionsMap>{
+      getDataModel: (uiModel, dm) => {
+        try {
+          this.uiModel = JSON.parse(dm.config);
+        } catch (e) {
+          console.error(e);
+          alert(e.message);
+        }
+      }
+    });
+  }
 }

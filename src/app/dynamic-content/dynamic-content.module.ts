@@ -14,6 +14,7 @@ import { FlexContainerUIComponent } from './ui-components/flex-container-ui-comp
 import { UISelectorComponent } from './ui-components/ui-selector-component';
 import { SelectUIComponent } from './ui-components/select-ui-component';
 import { CheckboxUIComponent } from './ui-components/checkbox-ui-component';
+import { TextareaUIComponent } from './ui-components/textarea-ui-component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { CheckboxUIComponent } from './ui-components/checkbox-ui-component';
         FlexContainerUIComponent,
         UISelectorComponent,
         CheckboxUIComponent,
-        SelectUIComponent
+        SelectUIComponent,
+        TextareaUIComponent
     ],
     imports: [
         CommonModule,
@@ -52,7 +54,8 @@ import { CheckboxUIComponent } from './ui-components/checkbox-ui-component';
       ButtonUIComponent,
       FlexContainerUIComponent,
       CheckboxUIComponent,
-      SelectUIComponent
+      SelectUIComponent,
+      TextareaUIComponent
     ],
 })
 export class DynamicContentModule { }

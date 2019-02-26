@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BaseUIComponent } from "./base-ui-component";
+import { BaseUIComponent } from './base-ui-component';
 
 @Component({
   selector: 'app-ui-select',

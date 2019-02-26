@@ -1,3 +1,5 @@
+import { EventEmitter } from 'events';
+
 type UIAction = (sender: UIModel, dataModel: any) => void;
 
 export interface AttributesMap {
@@ -22,7 +24,7 @@ export interface UIModel {
     children: UIModel[];
 }
 
-export interface ActionsContainer {
+export interface IActionsContainer {
     actions: ActionsMap;
     hasAction(actionName: string): boolean;
     onRunAction(sender: UIModel, actionName: string, dataModel: any): void;

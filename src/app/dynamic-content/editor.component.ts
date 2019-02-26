@@ -1,6 +1,9 @@
-import { Component, ViewChild, Input, Output, ElementRef, EventEmitter } from "@angular/core";
+import { Component, ViewChild, Input, Output, ElementRef, EventEmitter } from '@angular/core';
 
 // TODO: Use <app-ui-flex-container> and configuration to create editor component.
+/**
+ * @deprecated
+ */
 @Component({
   selector: 'app-editor',
   template: `
