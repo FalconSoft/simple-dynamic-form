@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { UIModel, ActionsMap, IActionsContainer } from './dynamic-content/models';
-import { TestPageUIModel, TestActionsMap } from './test-page.config';
+import { ProfilePageUIModel, ProfileActionsMap } from './profile-page.config';
 import { EditorUIModel } from './edit-config';
 import { ActionsContainer } from './actions-container';
 
@@ -13,14 +13,14 @@ import { ActionsContainer } from './actions-container';
 export class AppComponent {
   title = 'simple-dynamic-form';
 
-  uiModel: UIModel = TestPageUIModel;
-  actions = new ActionsContainer(TestActionsMap);
+  uiModel: UIModel = ProfilePageUIModel;
+  actions = new ActionsContainer(ProfileActionsMap);
   dataModel = {};
 
   editorUIModel: UIModel = EditorUIModel;
   editorActions: IActionsContainer;
   editorDataModel = {
-    config: JSON.stringify(TestPageUIModel, null, 4)
+    config: JSON.stringify(ProfilePageUIModel, null, 4)
   };
 
   constructor() {

@@ -1,6 +1,6 @@
 import { UIModel, AttributesMap, ActionsMap } from './dynamic-content/models';
 
-export const TestPageUIModel = <UIModel>{
+export const ProfilePageUIModel = <UIModel>{
     type: 'flex-container',
     itemProperties: <AttributesMap>{
         fxLayout: 'column',
@@ -161,7 +161,7 @@ export const TestPageDataModel = {
 
 };
 
-export const TestActionsMap = <ActionsMap>{
+export const ProfileActionsMap = <ActionsMap>{
     consoleLog: (uiModel, dm) => console.log('consoleLog ->', dm, uiModel),
 };
 

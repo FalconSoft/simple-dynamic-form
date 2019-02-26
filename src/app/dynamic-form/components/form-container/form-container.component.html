@@ -1,7 +1,0 @@
-<form [formGroup]="formData" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center center">
-    <app-flex-container #formContent [data]="config"></app-flex-container>
-    <div fxLayout="row">
-      <button mat-raised-button type="submit" [disabled]="!formData.valid">Submit</button>
-      <button mat-button type="reset">Reset</button>
-    </div>
-</form>

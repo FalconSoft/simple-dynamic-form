@@ -1,9 +1,0 @@
-<div class="flex-container">
-    <h3 *ngIf="data.label">{{data.label}}</h3>
-    <div class="flex-content"
-      [fxLayout]="data.layout || 'column'"
-      [fxLayoutAlign]="data.align || 'center'"
-      [fxLayoutGap]="data.gap || '10px'">
-      <div #control appElHost class="controls-placeholder"></div>
-    </div>
-</div>

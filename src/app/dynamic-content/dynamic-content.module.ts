@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, MatButtonModule, MatCardModule } from '@angular/material';
 
 import { EditorComponent } from './editor.component';
 import { InputUIComponent } from './ui-components/input-ui-component';
@@ -38,7 +38,8 @@ import { TextareaUIComponent } from './ui-components/textarea-ui-component';
         MatFormFieldModule,
         MatSelectModule,
         MatCheckboxModule,
-        MatButtonModule
+        MatButtonModule,
+        MatCardModule
     ],
     exports: [
         InputUIComponent,
