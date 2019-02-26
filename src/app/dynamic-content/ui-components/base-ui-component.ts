@@ -1,11 +1,10 @@
-import { OnInit, Input, OnDestroy, ViewContainerRef } from '@angular/core';
-import { UIModel, ActionsContainer } from '../models';
-import { FormControl } from '@angular/forms';
+import { OnInit, Input, OnDestroy } from '@angular/core';
+import { UIModel, IActionsContainer } from '../models';
 
 export class BaseUIComponent implements OnInit, OnDestroy {
     @Input() dataModel: any;
     @Input() uiModel: UIModel;
-    @Input() actions: ActionsContainer;
+    @Input() actions: IActionsContainer;
 
     ngOnInit(): void {
         const actionKey = this.uiModel.key + '_OnInit';

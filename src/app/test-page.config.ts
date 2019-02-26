@@ -58,7 +58,6 @@ export const TestPageUIModel = <UIModel>{
                 }
             },
             ]
-
         },
         {
             type: 'text',
@@ -153,7 +152,7 @@ export const TestPageUIModel = <UIModel>{
                     label: 'SUBMIT',
                     clickActionKey: 'consoleLog'
                 }
-              }
+              },
             ]
         }]
 };

@@ -1,12 +1,14 @@
-import { TestActionsMap } from './test-page.config';
-import { ActionsContainer, UIModel } from './dynamic-content/models';
+import { IActionsContainer, UIModel, ActionsMap } from './dynamic-content/models';
 
-export const actions = <ActionsContainer>{
-    actions: TestActionsMap,
+export class ActionsContainer implements IActionsContainer {
+    constructor(am: ActionsMap) {
+      this.actions = am;
+    }
+    actions: ActionsMap;
 
     hasAction(actionName: string): boolean {
       return this.actions.hasOwnProperty(actionName) && typeof this.actions[actionName] === 'function';
-    },
+    }
 
     onRunAction(sender: UIModel, actionName: string, dataModel: any): void {
       if (typeof this.actions[actionName] === 'function') {
@@ -15,4 +17,4 @@ export const actions = <ActionsContainer>{
           throw new Error('Unkown action name ->' + actionName);
       }
     }
-  };
+}

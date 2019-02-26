@@ -1,10 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { config, personalForm } from './form-config';
-import { FormContainerComponent } from './dynamic-form/components/form-container/form-container.component';
-import { UIModel } from './dynamic-content/models';
-import { TestPageUIModel } from './test-page.config';
-import { actions } from './actions-container';
+import { UIModel, ActionsMap, IActionsContainer } from './dynamic-content/models';
+import { TestPageUIModel, TestActionsMap } from './test-page.config';
+import { EditorUIModel } from './edit-config';
+import { ActionsContainer } from './actions-container';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +13,26 @@ import { actions } from './actions-container';
 export class AppComponent {
   title = 'simple-dynamic-form';
 
-  @ViewChild('form')
-  form: FormContainerComponent;
-
-  formConfig: any = config;
-
-  submittedData;
-
   uiModel: UIModel = TestPageUIModel;
+  actions = new ActionsContainer(TestActionsMap);
   dataModel = {};
-  actions = actions;
 
-  constructor() {}
+  editorUIModel: UIModel = EditorUIModel;
+  editorActions: IActionsContainer;
+  editorDataModel = {
+    config: JSON.stringify(TestPageUIModel, null, 4)
+  };
 
-  onSubmit(value) {
-    this.submittedData = value;
+  constructor() {
+    this.editorActions = new ActionsContainer(<ActionsMap>{
+      getDataModel: (uiModel, dm) => {
+        try {
+          this.uiModel = JSON.parse(dm.config);
+        } catch (e) {
+          console.error(e);
+          alert(e.message);
+        }
+      }
+    });
   }
 }

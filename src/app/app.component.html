@@ -3,16 +3,9 @@
     <h1 class="mat-h1">Profile form</h1>
     <app-ui-flex-container [uiModel]='uiModel' [dataModel]='dataModel' [actions]='actions'></app-ui-flex-container>
   </mat-card>
-  <!--
-  <app-form-container (submitted)="onSubmit($event)" #form [data]="formConfig"></app-form-container>
-
-  <div class="text-center">
-      <h5>Form dynamic state:</h5>
-      <div>{{form.formState | async}}</div>
-  </div>
-  -->
-  <div class="text-center">
-    <h5>Submitted form values:</h5>
-    <div>{{submittedData | json}}</div>
-  </div>
+  <br/>
+  <mat-card>
+      <h1 class="mat-h1">Config editor</h1>
+      <app-ui-flex-container [uiModel]='editorUIModel' [dataModel]='editorDataModel' [actions]='editorActions'></app-ui-flex-container>
+  </mat-card>
 </div>
