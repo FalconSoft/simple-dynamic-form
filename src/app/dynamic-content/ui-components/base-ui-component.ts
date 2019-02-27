@@ -7,14 +7,15 @@ export class BaseUIComponent implements OnInit, OnDestroy {
     @Input() actions: IActionsContainer;
 
     ngOnInit(): void {
-        const actionKey = this.uiModel.key + '_OnInit';
-        if (this.actions && this.uiModel.key && this.actions.hasAction(actionKey)) {
-            this.actions.onRunAction(this.uiModel, this.uiModel.key + '_OnInit', this.dataModel);
-        }
+      this.triggerAction('_OnInit');
     }
 
     ngOnDestroy(): void {
-        const actionKey = this.uiModel.key + '_OnDestroy';
+        this.triggerAction('_OnDestroy');
+    }
+
+    triggerAction(action: string): void {
+      const actionKey = this.uiModel.key + action;
         if (this.actions && this.uiModel.key && this.actions.hasAction(actionKey)) {
             this.actions.onRunAction(this.uiModel, actionKey, this.dataModel);
         }

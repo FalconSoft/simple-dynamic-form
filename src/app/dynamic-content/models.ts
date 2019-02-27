@@ -1,5 +1,3 @@
-import { EventEmitter } from 'events';
-
 type UIAction = (sender: UIModel, dataModel: any) => void;
 
 export interface AttributesMap {
