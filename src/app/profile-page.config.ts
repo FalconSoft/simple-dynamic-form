@@ -90,14 +90,16 @@ export const ProfilePageUIModel = <UIModel>{
           }
         },
         {
-            type: 'text-input',
+            type: 'select',
             containerProperties: {},
+            key: 'stateSelection',
             itemProperties: {
-                isNumeric: false,
-                isDate: false,
-                format: '',
-                placeholder: 'State',
-                dataModelPath: 'state'
+                options: [
+                  {label: 'United Kindom', value: 'uk'},
+                  {label: 'Ukraine', value: 'ua'}
+                ],
+                placeholder: 'Country',
+                dataModelPath: 'country'
           }
         },
         {
@@ -111,14 +113,12 @@ export const ProfilePageUIModel = <UIModel>{
                 width: '100%',
             },
             children: [{
-                type: 'text-input',
+                key: 'citySelection',
+                type: 'select',
                 containerProperties: {
                     fxFlex: '1 1 auto'
                 },
                 itemProperties: {
-                    isNumeric: false,
-                    isDate: false,
-                    format: '',
                     placeholder: 'City',
                     dataModelPath: 'city'
                 }
@@ -163,6 +163,33 @@ export const TestPageDataModel = {
 
 export const ProfileActionsMap = <ActionsMap>{
     consoleLog: (uiModel, dm) => console.log('consoleLog ->', dm, uiModel),
+    stateSelection_selectionChanged: (uiModel, {country}) => {
+      const targetModel = getUIModelByKey(ProfilePageUIModel, 'citySelection');
+      targetModel.itemProperties.options = {
+        uk: [
+          {label: 'London', value: 'london'},
+          {label: 'Liverpool', value: 'liverpool'}
+        ],
+        ua: [
+          {label: 'Lviv', value: 'lviv'},
+          {label: 'Kyiv', value: 'kyiv'}
+        ]
+      }[country] || [];
+    }
 };
 
+// TODO make function reusable, move it to class UIModel or ActionsContainer.
+function getUIModelByKey(model: UIModel, key: string): UIModel {
+  if (model.key === key) {
+    return model;
+  }
 
+  if (model.children && model.children.length) {
+    for (let i = 0; i < model.children.length; i++) {
+      const uiModel = getUIModelByKey(model.children[i], key);
+      if (uiModel) {
+        return uiModel;
+      }
+    }
+  }
+}
