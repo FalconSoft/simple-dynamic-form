@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { UIModel, ActionsMap, IActionsContainer, AttributesMap } from './dynamic-content/models';
-import { ProfilePageUIModel, ProfileActionsMap, ProfileCardUIModel } from './profile-page.config';
-import { EditorUIModel, EditorCardUIModel } from './edit-config';
+import { UIModel, ActionsMap, IActionsContainer } from './dynamic-content/models';
+import { ProfileActionsMap, ProfileCardUIModel } from './profile-page.config';
+import { EditorCardUIModel } from './edit-config';
 import { ActionsContainer } from './actions-container';
 
 @Component({
@@ -13,7 +13,6 @@ import { ActionsContainer } from './actions-container';
 export class AppComponent {
   title = 'simple-dynamic-form';
 
-  // uiModel: UIModel = ProfilePageUIModel;
   cardUIModel = ProfileCardUIModel;
   actions = new ActionsContainer(ProfileActionsMap);
   dataModel = {};

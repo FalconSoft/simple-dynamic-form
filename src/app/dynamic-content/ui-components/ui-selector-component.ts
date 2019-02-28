@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, SimpleChanges, OnChanges } from '@angular/core';
 import { BaseUIComponent } from './base-ui-component';
 import { InputUIComponent } from './input-ui-component';
 import { TextUIComponent } from './text-ui-component';
@@ -32,17 +32,34 @@ const resolveComponent = (() => {
     selector: 'app-ui-selector',
     template: ''
 })
-export class UISelectorComponent extends BaseUIComponent implements OnInit {
+export class UISelectorComponent extends BaseUIComponent implements OnInit, OnChanges {
   constructor(private containerRef: ViewContainerRef, private componentFactoryResolver: ComponentFactoryResolver) {
     super();
   }
 
+  private component: BaseUIComponent;
+
   ngOnInit() {
+    this.createComponent();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (const prop in changes) {
+      if (changes.hasOwnProperty(prop)) {
+        const change = changes[prop];
+        if (!change.firstChange && change.currentValue !== change.previousValue) {
+          this.component[prop] = change.currentValue;
+        }
+      }
+    }
+  }
+
+  private createComponent() {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(resolveComponent(this.uiModel.type));
     const componentRef = this.containerRef.createComponent(componentFactory);
-    const component = <BaseUIComponent>componentRef.instance;
-    component.actions = this.actions;
-    component.dataModel = this.dataModel;
-    component.uiModel = this.uiModel;
+    this.component = <BaseUIComponent>componentRef.instance;
+    this.component.actions = this.actions;
+    this.component.dataModel = this.dataModel;
+    this.component.uiModel = this.uiModel;
   }
 }
