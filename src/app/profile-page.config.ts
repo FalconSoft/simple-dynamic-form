@@ -157,6 +157,19 @@ export const ProfilePageUIModel = <UIModel>{
         }]
 };
 
+export const ProfileCardUIModel = {
+  type: 'card',
+  containerProperties: {
+    width: '100%'
+  },
+  itemProperties: <AttributesMap>{
+    header: {
+      title: 'Profile form'
+    },
+    content: ProfilePageUIModel
+  }
+};
+
 export const TestPageDataModel = {
 
 };

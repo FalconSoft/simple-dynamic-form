@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { UIModel, ActionsMap, IActionsContainer } from './dynamic-content/models';
-import { ProfilePageUIModel, ProfileActionsMap } from './profile-page.config';
-import { EditorUIModel } from './edit-config';
+import { UIModel, ActionsMap, IActionsContainer, AttributesMap } from './dynamic-content/models';
+import { ProfilePageUIModel, ProfileActionsMap, ProfileCardUIModel } from './profile-page.config';
+import { EditorUIModel, EditorCardUIModel } from './edit-config';
 import { ActionsContainer } from './actions-container';
 
 @Component({
@@ -13,21 +13,22 @@ import { ActionsContainer } from './actions-container';
 export class AppComponent {
   title = 'simple-dynamic-form';
 
-  uiModel: UIModel = ProfilePageUIModel;
+  // uiModel: UIModel = ProfilePageUIModel;
+  cardUIModel = ProfileCardUIModel;
   actions = new ActionsContainer(ProfileActionsMap);
   dataModel = {};
 
-  editorUIModel: UIModel = EditorUIModel;
+  editorUIModel: UIModel = EditorCardUIModel;
   editorActions: IActionsContainer;
   editorDataModel = {
-    config: JSON.stringify(ProfilePageUIModel, null, 4)
+    config: JSON.stringify(ProfileCardUIModel, null, 4)
   };
 
   constructor() {
     this.editorActions = new ActionsContainer(<ActionsMap>{
       getDataModel: (uiModel, dm) => {
         try {
-          this.uiModel = JSON.parse(dm.config);
+          this.cardUIModel = JSON.parse(dm.config);
         } catch (e) {
           console.error(e);
           alert(e.message);

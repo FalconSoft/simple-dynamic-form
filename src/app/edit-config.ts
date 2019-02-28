@@ -31,3 +31,16 @@ export const EditorUIModel = <UIModel>{
         },
       ]
     };
+
+    export const EditorCardUIModel = <UIModel>{
+      type: 'card',
+      containerProperties: {
+        width: '100%'
+      },
+      itemProperties: <AttributesMap>{
+        header: {
+          title: 'Configuration editor'
+        },
+        content: EditorUIModel
+      }
+    };

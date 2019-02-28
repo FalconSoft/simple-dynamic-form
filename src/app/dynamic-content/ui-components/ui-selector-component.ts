@@ -7,6 +7,7 @@ import { FlexContainerUIComponent } from './flex-container-ui-component';
 import { CheckboxUIComponent } from './checkbox-ui-component';
 import { SelectUIComponent } from './select-ui-component';
 import { TextareaUIComponent } from './textarea-ui-component';
+import { CardUIComponent } from './card-ui-component';
 
 const resolveComponent = (() => {
   const MAP = {
@@ -16,7 +17,8 @@ const resolveComponent = (() => {
     'flex-container': FlexContainerUIComponent,
     'checkbox': CheckboxUIComponent,
     'select': SelectUIComponent,
-    'textarea': TextareaUIComponent
+    'textarea': TextareaUIComponent,
+    'card': CardUIComponent
   };
   return (key: string) => {
     if (MAP.hasOwnProperty(key)) {

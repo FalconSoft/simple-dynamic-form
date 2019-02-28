@@ -15,6 +15,7 @@ import { UISelectorComponent } from './ui-components/ui-selector-component';
 import { SelectUIComponent } from './ui-components/select-ui-component';
 import { CheckboxUIComponent } from './ui-components/checkbox-ui-component';
 import { TextareaUIComponent } from './ui-components/textarea-ui-component';
+import { CardUIComponent } from './ui-components/card-ui-component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { TextareaUIComponent } from './ui-components/textarea-ui-component';
         UISelectorComponent,
         CheckboxUIComponent,
         SelectUIComponent,
-        TextareaUIComponent
+        TextareaUIComponent,
+        CardUIComponent
     ],
     imports: [
         CommonModule,
@@ -47,7 +49,8 @@ import { TextareaUIComponent } from './ui-components/textarea-ui-component';
         ButtonUIComponent,
         FlexContainerUIComponent,
         UISelectorComponent,
-        EditorComponent
+        EditorComponent,
+        CardUIComponent
     ],
     entryComponents: [
       InputUIComponent,
@@ -56,7 +59,8 @@ import { TextareaUIComponent } from './ui-components/textarea-ui-component';
       FlexContainerUIComponent,
       CheckboxUIComponent,
       SelectUIComponent,
-      TextareaUIComponent
+      TextareaUIComponent,
+      CardUIComponent
     ],
 })
 export class DynamicContentModule { }
