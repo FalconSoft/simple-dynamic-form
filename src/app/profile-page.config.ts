@@ -113,6 +113,7 @@ export const ProfilePageUIModel = <UIModel>{
                 width: '100%',
             },
             children: [{
+                key: 'citySelection',
                 type: 'select',
                 containerProperties: {
                     fxFlex: '1 1 auto'
@@ -163,7 +164,7 @@ export const TestPageDataModel = {
 export const ProfileActionsMap = <ActionsMap>{
     consoleLog: (uiModel, dm) => console.log('consoleLog ->', dm, uiModel),
     stateSelection_selectionChanged: (uiModel, {country}) => {
-      const targetModel = getUIModelByPath(ProfilePageUIModel, 'city');
+      const targetModel = getUIModelByKey(ProfilePageUIModel, 'citySelection');
       targetModel.itemProperties.options = {
         uk: [
           {label: 'London', value: 'london'},
@@ -177,14 +178,15 @@ export const ProfileActionsMap = <ActionsMap>{
     }
 };
 
-function getUIModelByPath(model: UIModel, path: string): UIModel {
-  if (model.itemProperties.dataModelPath === path) {
+// TODO make function reusable, move it to class UIModel or ActionsContainer.
+function getUIModelByKey(model: UIModel, key: string): UIModel {
+  if (model.key === key) {
     return model;
   }
 
   if (model.children && model.children.length) {
     for (let i = 0; i < model.children.length; i++) {
-      const uiModel = getUIModelByPath(model.children[i], path);
+      const uiModel = getUIModelByKey(model.children[i], key);
       if (uiModel) {
         return uiModel;
       }
