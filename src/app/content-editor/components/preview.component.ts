@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { EditorState, selectPreview } from '../store';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+import { ActionsContainer } from 'src/app/actions-container';
 
 @Component({
   selector: 'app-editor-preview',
@@ -27,9 +28,12 @@ export class PreviewComponent implements OnInit {
     this.$uiConfig = this.store.pipe(
       select(selectPreview),
       filter(config => Boolean(config.uiModel)),
-      map(({uiModel, actions}) => ({
-        uiModel: JSON.parse(uiModel),
-        actions
-      })));
+      map(({uiModel, actionsMap}) => {
+        const model = JSON.parse(uiModel);
+        return {
+          uiModel: model,
+          actions: new ActionsContainer(actionsMap, model)
+        };
+      }));
   }
 }

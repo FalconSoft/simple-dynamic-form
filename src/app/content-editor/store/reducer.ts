@@ -1,11 +1,12 @@
 import { ActionUnion, ActionTypes } from './actions';
 
 import { ProfileFormUIModel, ProfileActionsMap } from 'src/app/profile-page.config';
-import { ActionsContainer } from 'src/app/actions-container';
+// import { ActionsContainer } from 'src/app/actions-container';
+import { ActionsMap } from 'src/app/dynamic-content/models';
 
 export interface ComponentConfig {
   uiModel: string;
-  actions: ActionsContainer;
+  actionsMap: ActionsMap;
 }
 
 export interface EditorState {
@@ -15,8 +16,8 @@ export interface EditorState {
 
 const initialConfig: ComponentConfig = {
   uiModel: JSON.stringify(ProfileFormUIModel, null, 4),
-  actions: new ActionsContainer(ProfileActionsMap)
-}
+  actionsMap: ProfileActionsMap //new ActionsContainer(ProfileActionsMap)
+};
 
 export const initialState: EditorState = {
   config: {...initialConfig},
