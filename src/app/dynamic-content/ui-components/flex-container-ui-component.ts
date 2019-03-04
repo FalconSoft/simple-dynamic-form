@@ -8,6 +8,7 @@ import { BaseUIComponent } from './base-ui-component';
         [fxLayout]="uiModel.itemProperties?.fxLayout || 'row'"
         [fxLayoutGap]="uiModel.itemProperties?.fxLayoutGap || '0'"
         [fxLayoutAlign]="uiModel.itemProperties?.fxLayoutAlign"
+        [fxFlex]="uiModel.itemProperties?.fxFlex || '1 1 auto'"
         [style.height]="uiModel.itemProperties?.height || '100%'"
         [style.width]="uiModel.itemProperties?.width || '100%'"
     >

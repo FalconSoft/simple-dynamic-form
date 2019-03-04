@@ -6,6 +6,8 @@ import { DynamicContentModule } from './dynamic-content/dynamic-content.module';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material';
 
+import { ContentEditorModule } from './content-editor/content-editor.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { MatCardModule } from '@angular/material';
     FormsModule,
     BrowserModule,
     DynamicContentModule,
-    MatCardModule
+    MatCardModule,
+    ContentEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

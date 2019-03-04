@@ -6,7 +6,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule, MatFormFieldModule, MatSelectModule, MatCheckboxModule, MatButtonModule, MatCardModule } from '@angular/material';
 
-import { EditorComponent } from './editor.component';
 import { InputUIComponent } from './ui-components/input-ui-component';
 import { TextUIComponent } from './ui-components/text-ui-component';
 import { ButtonUIComponent } from './ui-components/button-ui-component';
@@ -19,7 +18,6 @@ import { CardUIComponent } from './ui-components/card-ui-component';
 
 @NgModule({
     declarations: [
-        EditorComponent,
         InputUIComponent,
         TextUIComponent,
         ButtonUIComponent,
@@ -49,7 +47,6 @@ import { CardUIComponent } from './ui-components/card-ui-component';
         ButtonUIComponent,
         FlexContainerUIComponent,
         UISelectorComponent,
-        EditorComponent,
         CardUIComponent
     ],
     entryComponents: [
