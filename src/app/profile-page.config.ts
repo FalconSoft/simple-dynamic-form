@@ -1,6 +1,6 @@
 import { UIModel, AttributesMap, ActionsMap } from './dynamic-content/models';
 
-export const ProfilePageUIModel = <UIModel>{
+export const ProfileFormUIModel = <UIModel>{
     type: 'flex-container',
     itemProperties: <AttributesMap>{
         fxLayout: 'column',
@@ -166,7 +166,7 @@ export const ProfileCardUIModel = {
     header: {
       title: 'Profile form'
     },
-    content: ProfilePageUIModel
+    content: ProfileFormUIModel
   }
 };
 
@@ -177,7 +177,7 @@ export const TestPageDataModel = {
 export const ProfileActionsMap = <ActionsMap>{
     consoleLog: (uiModel, dm) => console.log('consoleLog ->', dm, uiModel),
     stateSelection_selectionChanged: (uiModel, {country}) => {
-      const targetModel = getUIModelByKey(ProfilePageUIModel, 'citySelection');
+      const targetModel = getUIModelByKey(ProfileFormUIModel, 'citySelection');
       targetModel.itemProperties.options = {
         uk: [
           {label: 'London', value: 'london'},

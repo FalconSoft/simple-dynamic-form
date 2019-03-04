@@ -12,4 +12,5 @@ import { BaseUIComponent } from './base-ui-component';
     `
 })
 export class InputUIComponent extends BaseUIComponent {
+
 }
