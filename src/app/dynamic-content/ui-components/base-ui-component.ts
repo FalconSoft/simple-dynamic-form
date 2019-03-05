@@ -1,10 +1,13 @@
-import { OnInit, Input, OnDestroy, Output } from '@angular/core';
+import { OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { UIModel, IActionsContainer } from '../models';
 
 export class BaseUIComponent implements OnInit, OnDestroy {
     @Input() dataModel: any;
     @Input() uiModel: UIModel;
     @Input() actions: IActionsContainer;
+
+    @Output()
+    changedDataModel = new EventEmitter();
 
     ngOnInit(): void {
       this.triggerAction('_OnInit');

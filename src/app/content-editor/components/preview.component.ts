@@ -9,7 +9,7 @@ import { UIModel } from 'src/app/dynamic-content/models';
       <as-split-area size="60" fxLayout fxFlex="1 1 auto">
         <app-ui-flex-container fxFlex="1 1 auto"
         [uiModel]='uiModel' [dataModel]='dataModel' [actions]='actions'
-        (input)="OnDataModelChange()" (selectionChange)="OnDataModelChange()"></app-ui-flex-container>
+        (changedDataModel)="OnDataModelChange()"></app-ui-flex-container>
       </as-split-area>
       <as-split-area size="40" fxLayout fxFlex="1 1 auto">
         <ngx-monaco-editor [options]="editorOptions" fxLayout fxFlex="1 1 auto"
