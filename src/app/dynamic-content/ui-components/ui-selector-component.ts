@@ -61,5 +61,8 @@ export class UISelectorComponent extends BaseUIComponent implements OnInit, OnCh
     this.component.actions = this.actions;
     this.component.dataModel = this.dataModel;
     this.component.uiModel = this.uiModel;
+    this.component.changedDataModel.subscribe(() => {
+      this.changedDataModel.emit(this.dataModel);
+    });
   }
 }

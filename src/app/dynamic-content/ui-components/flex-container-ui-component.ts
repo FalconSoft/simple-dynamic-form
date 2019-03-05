@@ -17,6 +17,7 @@ import { BaseUIComponent } from './base-ui-component';
             [style.background] ="item.containerProperties?.backgroundColor">
 
             <app-ui-selector
+                (changedDataModel)="changedDataModel.emit(this.dataModel)"
                 [uiModel]='item'
                 [dataModel]='dataModel'
                 [actions]='actions'
