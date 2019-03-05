@@ -1,19 +1,19 @@
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
-  ApplyConfig = '[Editor] Apply config',
-  DynamicConfig = '[Editor] Dynamic config'
+  SetPreviewConfig = '[Editor] Apply config',
+  SetDynamicConfig = '[Editor] Set Dynamic config'
 }
 
-export class ApplyConfig implements Action {
-  readonly type = ActionTypes.ApplyConfig;
+export class SetPreviewConfig implements Action {
+  readonly type = ActionTypes.SetPreviewConfig;
 }
 
-export class DynamicConfig implements Action {
-  readonly type = ActionTypes.DynamicConfig;
+export class SetDynamicConfig implements Action {
+  readonly type = ActionTypes.SetDynamicConfig;
 
   constructor(public payload: string) {}
 }
 
 
-export type ActionUnion = ApplyConfig | DynamicConfig;
+export type ActionUnion = SetPreviewConfig | SetDynamicConfig;

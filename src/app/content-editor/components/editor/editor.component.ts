@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DynamicConfig, EditorState, selectConfig } from '../../store';
+import { SetDynamicConfig, EditorState, selectConfig } from '../../store';
 import { Store, select } from '@ngrx/store';
 import { first } from 'rxjs/operators';
 
@@ -13,16 +13,16 @@ export class EditorComponent implements OnInit {
   constructor(private store: Store<EditorState>) { }
 
   editorOptions = {language: 'json', automaticLayout: true};
-  uiModel;
+  uiModel: string;
 
-  OnCodeChange(evt) {
-    this.store.dispatch(new DynamicConfig(this.uiModel));
+  OnCodeChange() {
+    this.store.dispatch(new SetDynamicConfig(this.uiModel));
   }
 
   ngOnInit() {
+    // Set initial UI model state.
     this.store.pipe(select(selectConfig), first()).subscribe(config => {
       this.uiModel = config.uiModel;
     });
   }
-
 }

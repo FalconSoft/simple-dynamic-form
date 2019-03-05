@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EditorState, ApplyConfig } from '../store';
+import { EditorState, SetPreviewConfig } from '../store';
 
 @Component({
   selector: 'app-editor-toolbar',
@@ -9,11 +9,10 @@ import { EditorState, ApplyConfig } from '../store';
     <mat-toolbar-row>
       <span>Dynamic Content Editor</span>
       <span class="spacer"></span>
-      <button mat-flat-button (click)="saveInPreview()">Preview</button>
       <button mat-flat-button disabled="disabled">Load Config</button>
       <button mat-flat-button disabled="disabled">Save Config</button>
       <button mat-flat-button disabled="disabled">Show in Stackblitz</button>
-      <button mat-flat-button>Refresh</button>
+      <button mat-flat-button (click)="saveInPreview()">Refresh</button>
       <button mat-flat-button disabled="disabled">Help</button>
     </mat-toolbar-row>
   </mat-toolbar>`,
@@ -23,7 +22,8 @@ import { EditorState, ApplyConfig } from '../store';
     }
 
     button {
-      margin: 0 .5em;
+      margin: 0 .25em;
+      line-height: 28px;
     }`]
 })
 export class ToolbarComponent implements OnInit {
@@ -34,7 +34,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   saveInPreview() {
-    this.store.dispatch(new ApplyConfig());
+    this.store.dispatch(new SetPreviewConfig());
   }
 
 }

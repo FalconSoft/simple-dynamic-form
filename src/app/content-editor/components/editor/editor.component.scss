@@ -3,5 +3,9 @@
 }
 
 ngx-monaco-editor {
-  height: 100%;
+  height: calc(100% - 7px);
+}
+
+mat-tab-group {
+  width: 100%;
 }

@@ -1,7 +1,6 @@
 import { ActionUnion, ActionTypes } from './actions';
 
 import { ProfileFormUIModel, ProfileActionsMap } from 'src/app/profile-page.config';
-// import { ActionsContainer } from 'src/app/actions-container';
 import { ActionsMap } from 'src/app/dynamic-content/models';
 
 export interface ComponentConfig {
@@ -16,7 +15,7 @@ export interface EditorState {
 
 const initialConfig: ComponentConfig = {
   uiModel: JSON.stringify(ProfileFormUIModel, null, 4),
-  actionsMap: ProfileActionsMap //new ActionsContainer(ProfileActionsMap)
+  actionsMap: ProfileActionsMap
 };
 
 export const initialState: EditorState = {
@@ -26,7 +25,7 @@ export const initialState: EditorState = {
 
 export function reducer(state = initialState, action: ActionUnion) {
   switch (action.type) {
-    case ActionTypes.ApplyConfig: return {
+    case ActionTypes.SetPreviewConfig: return {
       ...state,
       preview: {
         ...state.preview,
@@ -34,7 +33,7 @@ export function reducer(state = initialState, action: ActionUnion) {
       }
     };
 
-    case ActionTypes.DynamicConfig: return {
+    case ActionTypes.SetDynamicConfig: return {
       ...state,
       config: {
         uiModel: action.payload
