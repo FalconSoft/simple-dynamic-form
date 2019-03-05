@@ -176,8 +176,8 @@ export const TestPageDataModel = {
 
 export const ProfileActionsMap = <ActionsMap>{
     consoleLog: (uiModel, dm) => console.log('consoleLog ->', dm, uiModel),
-    stateSelection_selectionChanged: (uiModel, {country}) => {
-      const targetModel = getUIModelByKey(ProfileFormUIModel, 'citySelection');
+    stateSelection_selectionChanged: (uiModel, {country}, fullUIModel) => {
+      const targetModel = getUIModelByKey(fullUIModel, 'citySelection');
       targetModel.itemProperties.options = {
         uk: [
           {label: 'London', value: 'london'},

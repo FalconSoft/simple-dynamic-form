@@ -1,4 +1,4 @@
-type UIAction = (sender: UIModel, dataModel: any) => void;
+type UIAction = (sender: UIModel, dataModel: any, uiModel: UIModel) => void;
 
 export interface AttributesMap {
     width?: string;
