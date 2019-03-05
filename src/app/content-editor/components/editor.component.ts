@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { registerMonacoCompletion, defaultOptions } from '../monaco.config';
 
 @Component({
   selector: 'app-editor',
@@ -28,9 +29,10 @@ export class EditorComponent implements OnInit {
 
   constructor() { }
 
-  editorOptions = {language: 'json', automaticLayout: true};
+  editorOptions = defaultOptions;
   uiModel: string;
 
   ngOnInit() {
+    registerMonacoCompletion();
   }
 }
