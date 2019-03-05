@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { EditorState, SetPreviewConfig } from '../store';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-editor-toolbar',
@@ -12,7 +10,7 @@ import { EditorState, SetPreviewConfig } from '../store';
       <button mat-flat-button disabled="disabled">Load Config</button>
       <button mat-flat-button disabled="disabled">Save Config</button>
       <button mat-flat-button disabled="disabled">Show in Stackblitz</button>
-      <button mat-flat-button (click)="saveInPreview()">Refresh</button>
+      <button mat-flat-button (click)="action.emit('refresh')">Refresh</button>
       <button mat-flat-button disabled="disabled">Help</button>
     </mat-toolbar-row>
   </mat-toolbar>`,
@@ -28,13 +26,11 @@ import { EditorState, SetPreviewConfig } from '../store';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(private store: Store<EditorState>) { }
+  constructor() { }
+
+  @Output()
+  action = new EventEmitter<string>();
 
   ngOnInit() {
   }
-
-  saveInPreview() {
-    this.store.dispatch(new SetPreviewConfig());
-  }
-
 }

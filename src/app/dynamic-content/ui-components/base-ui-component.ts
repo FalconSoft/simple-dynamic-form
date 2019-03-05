@@ -1,4 +1,4 @@
-import { OnInit, Input, OnDestroy } from '@angular/core';
+import { OnInit, Input, OnDestroy, Output } from '@angular/core';
 import { UIModel, IActionsContainer } from '../models';
 
 export class BaseUIComponent implements OnInit, OnDestroy {

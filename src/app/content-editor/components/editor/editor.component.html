@@ -1,8 +1,0 @@
-<mat-tab-group fxFlex="1 1 auto">
-    <mat-tab label="UI Model">
-        <ngx-monaco-editor #uiModelEditor [options]="editorOptions"
-        (input)="OnCodeChange($event)"
-        [(ngModel)]="uiModel"></ngx-monaco-editor>
-    </mat-tab>
-    <mat-tab label="Action" disabled></mat-tab>
-</mat-tab-group>
